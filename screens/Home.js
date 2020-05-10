@@ -1,22 +1,21 @@
 import React, { Component }  from 'react';
 import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
 import { Card, FAB } from 'react-native-paper';
-function Home(props) {
-    const items = [
-        { id : 1, name : "andi", postion : "web dev"},
-        { id : 2, name : "andi", postion : "web dev"},
-        { id : 3, name : "andi", postion : "web dev"},
-        { id : 4, name : "andi", postion : "web dev"},
-        { id : 5, name : "andi", postion : "web dev"},
-        { id : 6, name : "andi", postion : "web dev"},
-    ]
-   const handleFab = (e)=>{
-        console.log('on presse');
-   }
 
+
+function Home({navigation}) {
+    const items = [
+        { id : 1, name : "andi", postion : "dev ops"},
+        { id : 2, name : "budi", postion : "front end"},
+        { id : 3, name : "caca", postion : "back end"},
+        { id : 4, name : "deny", postion : "full stack"},
+        { id : 5, name : "efen", postion : "ui/ux"},
+        { id : 6, name : "fandi", postion : "data sciencetis"},
+    ]
+  
    const datax = (item)=>{
        return(
-        <Card style={classes.container}  key={item.id}>
+        <Card style={classes.container}  key={item.id} onPress={()=>navigation.navigate("Profile",{item})}>
             <View style={classes.cardView}>
             <Image source={{ uri : 'https://images.unsplash.com/flagged/photo-1578848151039-b8916d7c1c34?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=521&q=80' }}  style={classes.imagex}/> 
                 <View style={{ marginLeft : 20}}>
@@ -39,7 +38,7 @@ function Home(props) {
           
 
         
-        <FAB style={classes.fab} small={false} icon="plus" theme={{ colors : {accent : "#006aff"}}} onPress={ handleFab}/>
+        <FAB style={classes.fab} small={false} icon="plus" theme={{ colors : {accent : "#006aff"}}} onPress={()=>navigation.navigate("Create")}/>
          </View>
         )
 }

@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, Image, Linking, Platform} from 'react-native'
 import  LinearGradient from "react-native-linear-gradient";
 import { Title,Card, Button } from "react-native-paper";
 import   MaterialIcon  from 'react-native-vector-icons/MaterialIcons';
-const Profile = () => {
+const Profile = ({ route }) => {
 
     const openDial = ()=>{
         if(Platform.OS === 'android'){
@@ -12,6 +12,8 @@ const Profile = () => {
             Linking.openURL("telprompt:12345")
         }
     }
+
+    const {  name, postion } = route.params.item
     return (
         <View>
            <LinearGradient colors={['#0033ff', '#6bc1ff']} style={classes.root} />
@@ -21,8 +23,8 @@ const Profile = () => {
                  source={{ uri : "https://images.unsplash.com/photo-1580309237429-661ea7cd1d53?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"}} />
            </View>
            <View style={{ alignItems : 'center'}}>
-               <Title>Jhoen Doe</Title>
-               <Text style={{ fontSize : 15 }}>Web Developper</Text>
+            <Title>{name}</Title>
+    <Text style={{ fontSize : 15 }}>{postion}</Text>
            </View>
            <Card style={classes.mycard} onPress={()=>{ Linking.openURL("mailto:deny@gmail.com")}}>
                 <View style={classes.cardItem}>
